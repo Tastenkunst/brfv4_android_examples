@@ -30,8 +30,11 @@ public class CameraPermissionActivity extends AppCompatActivity {
 		super.onResume();
 
 		if(checkCameraPermission()) {
+
 			onCameraAccess();
+
 		} else {
+
 			onCameraAwaitingPermission();
 		}
 	}
@@ -47,8 +50,11 @@ public class CameraPermissionActivity extends AppCompatActivity {
 		} else {
 
 			if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+
 				buildPermissionDialog();
+
 			} else {
+
 				ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
 			}
 		}

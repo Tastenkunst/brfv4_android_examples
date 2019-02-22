@@ -38,12 +38,18 @@ public class AspectRatioTextureView extends TextureView {
 		int height = MeasureSpec.getSize(heightMeasureSpec);
 
 		if (0 == _ratioWidth || 0 == _ratioHeight) {
+
 			setMeasuredDimension(width, height);
+
 		} else {
-			if (width < height * _ratioWidth / _ratioHeight) {
-				setMeasuredDimension(width, width * _ratioHeight / _ratioWidth);
+
+			if (width < (float)height * (float)_ratioWidth / (float)_ratioHeight) {
+
+                setMeasuredDimension(width, (int)((float)width * (float)_ratioHeight / (float)_ratioWidth));
+
 			} else {
-				setMeasuredDimension(height * _ratioWidth / _ratioHeight, height);
+
+				setMeasuredDimension((int)((float)height * (float)_ratioWidth / (float)_ratioHeight), height);
 			}
 		}
 	}

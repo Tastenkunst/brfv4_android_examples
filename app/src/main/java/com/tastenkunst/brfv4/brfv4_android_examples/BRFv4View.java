@@ -35,6 +35,8 @@ public class BRFv4View extends FrameLayout {
 	protected void onAttachedToWindow() {
 		super.onAttachedToWindow();
 
+		// Please note: This is a TRIAL version for testing. Contact us for a commercial license.
+
 		_camUtils   = new CameraUtils();
 
 		_preview	= new AspectRatioTextureView(getContext());
@@ -88,7 +90,7 @@ public class BRFv4View extends FrameLayout {
 
 			if(_camUtils.init()) {
 
-				_previewImageData = _preview.getBitmap(480, 640);
+				_previewImageData = _preview.getBitmap(_camUtils.height, _camUtils.width);
 
 				updateLayout(_previewImageData.getWidth(), _previewImageData.getHeight());
 
@@ -137,14 +139,17 @@ public class BRFv4View extends FrameLayout {
 		int viewWidth			= getWidth();
 		int viewHeight			= getHeight();
 
-		float viewRatio			= viewWidth / viewHeight;
-		float canvasRatio		= width / height;
+		float viewRatio			= (float)viewWidth / (float)viewHeight;
+		float canvasRatio		= (float)width / (float)height;
 		float drawScale			= 1.0f;
 
 		if(viewRatio > canvasRatio) {
-			drawScale = viewHeight / height;
+
+			drawScale = (float)viewHeight / (float)height;
+
 		} else {
-			drawScale = viewWidth / width;
+
+			drawScale = (float)viewWidth / (float)width;
 		}
 
 		_example.setScaleX(drawScale);
